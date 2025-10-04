@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: geistSans;
+  --font-mono: geistMono;
   --color-bgp: #000020;
   --color-text: #010101;
   --color-accent: #0099ff;
@@ -17,28 +17,23 @@
 }
 
 .words {
-  @apply w-full relative flex flex-row justify-center items-center text-center text-white;
+  @apply relative flex w-full flex-row items-center justify-center text-center text-white;
   font-size: 150%;
 }
 
 @layer components {
   .mybtn {
-
     font-size: 0.75rem;
-    
-    @apply w-12 bg-bgp flex justify-center items-center text-center text-white font-mono
-    border-4 border-double border-accent border-spacing-1
-    rounded-lg;
+
+    @apply flex w-12 border-spacing-1 items-center justify-center rounded-lg border-4 border-double border-accent bg-bgp text-center font-mono text-white;
     padding: 0;
     margin: 0.25rem;
   }
 
   .mybtn:hover {
-    @apply bg-accent border-4 border-solid border-bgp cursor-pointer;
+    @apply cursor-pointer border-4 border-solid border-bgp bg-accent;
     font-size: 140%;
-
   }
-
 }
 
 @media (prefers-color-scheme: dark) {
