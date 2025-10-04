@@ -1,13 +1,9 @@
 import List from "../components/List";
 
-
-
 export default function Page() {
-    return (
-        <div className="relative font-sans flex flex=col justify-center items-center w-full h-full text-white bg-bgp">
-
-            <List />
-
-        </div>
-    )
+  return (
+    <div className="flex=col relative flex h-full w-full items-center justify-center bg-bgp font-sans text-white">
+      <List />
+    </div>
+  );
 }

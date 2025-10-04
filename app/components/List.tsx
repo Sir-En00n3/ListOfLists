@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import ListItem from "./ListItem";
 import ListTitle from "./ListTitle";
@@ -9,11 +9,13 @@ export default function List() {
   return (
     <>
       {/* ---The List Card--- */}
-      <div className="relative flex rounded-2xl h-[90%] w-full max-w-md flex-col items-center justify-start border-4 border-solid border-accent bg-mybg text-text sm:w-3/4 md:w-1/2">
+      <div className="relative flex h-[90%] w-full max-w-md flex-col items-center justify-start rounded-2xl border-4 border-solid border-accent bg-mybg text-text sm:w-3/4 md:w-1/2">
         {/* ---header-style menu--- */}
-        <div className="relative flex h-[4.5rem] rounded-t-xl w-full flex-row items-center justify-center border-4 bg-accent">
+        <div className="relative flex h-[4.5rem] w-full flex-row items-center justify-center rounded-t-xl border-4 bg-accent">
           <HomeBtn />
-          <h1 className="relative text-center text-3xl font-mono font-extrabold mx-auto text-bgp">ListsOfLists</h1>
+          <h1 className="relative mx-auto text-center font-mono text-3xl font-extrabold text-bgp">
+            ListsOfLists
+          </h1>
           <UiBtn />
         </div>
 
