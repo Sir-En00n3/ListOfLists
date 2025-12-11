@@ -1,10 +1,30 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, JSX } from "react";
 
-export default function ListTitle() {
-  const [titleText, setTitleText] = useState("The List Title");
-  const [userEditedTitle, setUserEditedTitle] = useState(false);
+/**
+ * @typedef {object} ListTitleProps
+ * @property {string} title - The current title of the list.
+ * @property {(next: string) => void} onTitleChangeAction - Callback function to be invoked when the title is changed.
+ */
+type ListTitleProps = {
+  title: string;
+  onTitleChangeAction: (next: string) => void;
+};
+
+/**
+ * A React component that displays and allows for the editing of a list's title.
+ *
+ * When the title is clicked, it transforms into an input field, allowing the user to make changes.
+ * The update is finalized when the user presses the 'Enter' key or when the input field loses focus.
+ *
+ * @param {ListTitleProps} { title, onTitleChangeAction } The props for the component.
+ * @returns {JSX.Element} The rendered title component, which is either a static span or an input field.
+ */
+export default function ListTitle({
+  title,
+  onTitleChangeAction,
+}: ListTitleProps): JSX.Element {
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -16,7 +36,7 @@ export default function ListTitle() {
   // Title logic
   const handleTitleClick = () => {
     setIsEditingTitle(true);
-    setInputValue(userEditedTitle ? titleText : "");
+    setInputValue(title);
   };
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,25 +45,13 @@ export default function ListTitle() {
 
   const handleTitleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      if (inputValue.trim()) {
-        setTitleText(inputValue);
-        setUserEditedTitle(true);
-      } else {
-        setTitleText("List Title");
-        setUserEditedTitle(false);
-      }
+      onTitleChangeAction(inputValue.trim() || "List Title");
       setIsEditingTitle(false);
     }
   };
 
   const handleTitleBlur = () => {
-    if (inputValue.trim()) {
-      setTitleText(inputValue);
-      setUserEditedTitle(true);
-    } else {
-      setTitleText("List Title");
-      setUserEditedTitle(false);
-    }
+    onTitleChangeAction(inputValue.trim() || "List Title");
     setIsEditingTitle(false);
   };
 
@@ -69,7 +77,7 @@ export default function ListTitle() {
           role="button"
           aria-label="Edit list title"
         >
-          {titleText}
+          {title}
         </span>
       )}
     </div>
