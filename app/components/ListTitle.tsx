@@ -26,7 +26,7 @@ export default function ListTitle({
   onTitleChangeAction,
 }: ListTitleProps): JSX.Element {
   const [isEditingTitle, setIsEditingTitle] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("type title here");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

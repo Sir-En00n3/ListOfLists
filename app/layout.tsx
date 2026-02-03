@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Merienda, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+
+
+const merienda = Merienda({
+  variable: "--font-merienda",
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +32,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${merienda.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="flex=col relative flex h-full w-full items-center justify-items-center bg-bgp font-sans text-white">
+          <main className="flex h-full w-full flex-col items-center justify-center border-4 border-yellow-400">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

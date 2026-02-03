@@ -1,13 +1,14 @@
-import UiBtn from "./components/UiBtn";
+import NewListBtn from "./components/NewListBtn";
+import WelcomeBtn from "./components/WelcomeBtn";
 
 export default function Home() {
   return (
-    <div className="flex=col relative flex h-full w-full items-center justify-items-center bg-bgp font-sans text-white">
-      <main className="flex h-full w-full flex-col items-center justify-center border-4 border-yellow-400">
-        <p className="words">These are Words!@#$?</p>
-        <div className="h-10 w-full"></div>
-        <UiBtn />
-      </main>
+    <div className="relative flex justify-center items-center text-center">
+      <p className="words">These are Words!@#$?</p>
+        <div className="h-10 w-full">
+          <NewListBtn />
+          <WelcomeBtn />
+        </div>
     </div>
   );
 }
